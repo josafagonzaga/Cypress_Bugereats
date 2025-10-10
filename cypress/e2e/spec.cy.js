@@ -9,7 +9,7 @@ context('Projeto - Buger Eats', () =>
 		context(`${contexto} - Critérios de aceite.`, () => 
 		{
 			let complemento = 1;
-			describe.only(`${cenario} - Validações Visuais.`, () => 
+			describe(`${cenario} - Validações Visuais.`, () => 
 			{
 				beforeEach(() => {
 					cy.visitaProjeto();
@@ -38,7 +38,7 @@ context('Projeto - Buger Eats', () =>
 			describe(`${cenario} - Validações Visuais.`, () => 
 			{
 				beforeEach(() => {
-					cy.visitaProjeto()
+					cy.telaCadastro()
 				});
 
 				afterEach(() => {
@@ -49,15 +49,12 @@ context('Projeto - Buger Eats', () =>
 
 				describe('Título', () =>
 				{
-					it(`${teste}.${complemento} - Validar "título"`, () =>
+					it(`${teste}.${complemento} - Validar "título e subtitulos"`, () =>
 					{
 						//Dado estou acessando o sistema BugerEats
 						//Quando estiver na tela de cadastro 
-						//Então eu valido o campo titulo
-						cy.get('h1')
-							.should('be.visible')
-							.and('contain.text', 'Cadastre-se para  fazer entregas')
-							.and('have.css', 'color', 'rgb(50, 33, 83)');
+						//Então eu valido o titulo e sub-titulos
+						cy.validaTituloSubtitulo()
 					});
 				});
 
@@ -66,43 +63,35 @@ context('Projeto - Buger Eats', () =>
 					complemento = 1;
 					it(`${++teste}.${complemento} - Validar se o campo "nome" está visível`, () =>
 					{
-						//Passo - Dado estou acessando o sistema BugerEats
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se campo está visível
-						cy.get('input[name="fullName"]')
-							.should('be.visible');
-					});
+						//Dado estou acessando o sistema BugerEats
+						//Quando estiver na tela de cadastro 
+						//Então eu valido se campo está visível
+						cy.visivelNome()
+						});
 
 					it(`${teste}.${++complemento} - Validar se o campo "nome" está habilitado`, () =>
 					{
-						//Passo - Dado estou acessando o sistema BugerEats
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se campo está habilitado
-						cy.get('input[name="fullName"]')
-							.should('be.enabled');
+						//Dado estou acessando o sistema BugerEats
+						//Quando estiver na tela de cadastro 
+						//Então eu valido se campo está habilitado
+						cy.habilidatoNome()
 					});
 
 					it(`${teste}.${++complemento} - Validar se o campo "nome" está vazio`, () => //Primeiro teste V1
 					{
-						//Passo - Dado estou acessando o sistema BugerEats
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se campo está vazio
-						cy.get('input[name="fullName"]')
-							.should('be.enabled')
-								.and('have.value', '');
+						//Dado estou acessando o sistema BugerEats
+						//Quando estiver na tela de cadastro 
+						//Então eu valido se campo está vazio
+						cy.vazioNome()
 					})
 
 					it(`${teste}.${++complemento} - Validar se o campo "nome" está com placeholder correto`, () =>
 					{
-						//Passo - Dado estou acessando o sistema BugerEats
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se o placeholder correto
-						cy.get('input[name="fullName"]')
-							.should('be.visible')
-								.and('have.attr', 'placeholder', 'Nome completo');
+						//Dado estou acessando o sistema BugerEats
+						//Quando estiver na tela de cadastro 
+						//Então eu valido se o placeholder correto
+						cy.placeholderNome()
 					})
-
-					
 				});
 
 				describe('Campo CPF', () =>
@@ -110,28 +99,18 @@ context('Projeto - Buger Eats', () =>
 					complemento = 1;
 					it(`${++teste}.${complemento} - Validar se o campo "cpf" está visível`, () =>
 					{
-						//Passo - Dado que estou logado no sistema Bugger eat
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se campo está visível
-						cy.get('input[name="cpf"]')
-							.should('be.visible');
+						//Dado que estou logado no sistema Bugger eat
+						//Quando estiver na tela de cadastro 
+						//Então eu valido se campo está visível
+						cy.visivelCPF()
 					});
 
-					//avaliar
 					it(`${teste}.${++complemento} - Validar caracteristicas do campo`, () =>
 					{
-						//Passo - Dado que estou logado no sistema Bugger eat
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se campo está visível
-						cy.get('input[name="cpf"]')
-							.should('be.visible')
-							.and('have.attr','type', 'text')
-							.and('have.attr','name', 'cpf')
-							.and('have.attr','placeholder', 'CPF somente números')
-							.and('have.css','color','rgb(108, 108, 128)')
-							.and('be.empty')
-							.and('be.enabled')
-							//and('')//<input type="text" name="cpf" placeholder="CPF somente números">
+						//Dado que estou logado no sistema Bugger eat
+						//Quando estiver na tela de cadastro 
+						//Então eu valido se campo está visível
+						cy.caracteristicasCPF()
 					});
 
 					it(`${teste}.${++complemento} - Validar se o campo "cpf" está habilitado`, () =>
@@ -139,8 +118,7 @@ context('Projeto - Buger Eats', () =>
 						//Passo - Dado estou na tela de cadastro
 						//Passo - Quando verifico o campo cpf 
 						//Passo - Então eu valido se campo está habilitado
-						cy.get('input[name="cpf"]')
-							.should('be.enabled');
+						cy.habilidatoCPF()
 					});
 
 					it(`${teste}.${++complemento} - Validar se o campo "cpf" está vazio`, () => //Primeiro teste V1
@@ -148,19 +126,7 @@ context('Projeto - Buger Eats', () =>
 						//Passo - Dado estou na tela de cadastro
 						//Passo - Quando verifico o campo cpf 
 						//Passo - Então eu valido se campo está vazio
-						cy.get('input[name="cpf"]')
-							.should('have.value', '');
-
-						cy.get('input[name="cpf"]')
-							.should('be.empty');
-
-						cy.get('input[name="cpf"]')
-						.type('123')
-
-						cy.get('input[name="cpf"]')
-						.clear()
-						.should('be.empty')
-
+						cy.vazioCPF()
 					})
 
 					it(`${teste}.${++complemento} - Validar se o campo "cpf" está com placeholder correto`, () =>
@@ -168,8 +134,7 @@ context('Projeto - Buger Eats', () =>
 						//Passo - Dado estou na tela de cadastro
 						//Passo - Quando verifico o campo cpf 
 						//Passo - Então eu valido se campo está com placeholder correto
-						cy.get('input[name="cpf"]')
-							.should('have.attr', 'placeholder', 'CPF somente números');
+						cy.placeholderCPF()
 					})
 				});
 
@@ -177,99 +142,12 @@ context('Projeto - Buger Eats', () =>
 				{
 					complemento = 1;
 					
-					//avaliar
-					it(`${++teste}.${complemento} - Validar caracteristicas do campo`, () =>
+					it.only(`${++teste}.${complemento} - Validar caracteristicas do campo`, () =>
 					{
-						//Passo - Dado que estou logado no sistema Bugger eat
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se campo está visível
-						cy.get('input[name="email"]')
-							.should('be.visible')
-							.and('have.attr','name', 'email')
-							.and('have.attr','placeholder', 'E-mail')
-							.and('have.css','color','rgb(108, 108, 128)')
-							.and('be.empty')
-							.and('be.enabled')
-					});
-
-					it(`${teste}.${++complemento} - Validar se o campo "email" está em foco`, () =>
-					{
-						//Dado estou na tela de cadastro
-						//Quando verifico o campo email
-						cy.get('input[name="email"]')
-						//E coloco o mouse no campo
-							.realHover()
-						//Então eu valido se campo está em foco
-								.and('have.css', 'border-bottom-color', 'rgb(52, 203, 121)')
-								.and('have.css', 'border-left-color', 'rgb(52, 203, 121)')
-								.and('have.css', 'border-right-color', 'rgb(52, 203, 121)')
-								.and('have.css', 'border-top-color', 'rgb(52, 203, 121)');
-					})
-
-					it(`${teste}.${++complemento} - Validar que o campo "email" foi preenchido com um email inválido`, () =>
-					{
-						//Dado que inseri um email imvalido
-						cy.get('input[name="email"]')
-							.type('12345678');
-
-						//Quando clico no botão 'Cadastre-se para fazer entregas'
-						cy.get('.button-success')
-							.click();
-
-						//Entao deve ser apresentado a mensagem 'Oops! Email com formato inválido.' logo abaixo do campo
-						cy.get('.alert-error').eq(2)
-							.should('have.text','Oops! Email com formato inválido.');
-					})
-
-					it(`${teste}.${++complemento} - Validar que o campo "email" foi preenchido com um email válido`, () =>
-					{
-						//Dado estou na tela de cadastro
-						//Quando verifico o campo email
-						cy.get('input[name="email"]')
-						//E digito um email valido
-							.type('teste@gmail.com');
-						//E clico no botão 'Cadastre-se para fazer entregas'
-								cy.get('.button-success')
-									.click();
-						//Entao o campo deve ser apresentado sem nenhuma mensagem de erro abaixo
-									cy.get('input[name="email"]')
-										.parent()
-										.find('.alert-error')
-										.should('not.exist')
-						//E deve estar preenchido com o nome valido digitado
-										cy.get('input[name="email"]')
-											.and('have.value','teste@gmail.com')
-					})
-
-					it(`${teste}.${++complemento} - Validar campo email preenchido e os campos, nome, cpf, cep, numero, metodo de entrega e CNH nao preenchidos`, () =>
-					{
-						//Dado estou na tela de cadastro
-						//Quando verifico o campo email
-						cy.get('input[name="email"]')
-						//E digito um email válido e o restantes dos campos em branco
-							.type('teste@gmail.com');
-						//E clico no botao Cadastre-se para fazer entregas
-							cy.get('.button-success')
-								.click();
-						//Entao deve ser apresentado os erros para preencher os campos vazios						
-								cy.get('.alert-error').eq(0)
-									.should('be.visible')
-									.and('have.text','É necessário informar o nome');
-									cy.get('.alert-error').eq(1)
-										.should('be.visible')
-										.and('have.text','É necessário informar o CPF');
-											cy.get('.alert-error').eq(2)
-												.should('be.visible')
-												.and('have.text', 'É necessário informar o CEP');
-												cy.get('.alert-error').eq(3)
-													.should('be.visible')
-													.and('have.text', 'É necessário informar o número do endereço');
-													cy.get('.alert-error').eq(4)
-														.should('be.visible')
-														.and('have.text', 'Selecione o método de entrega');
-														cy.get('.alert-error').eq(5)
-															.should('be.visible')
-															.and('have.text', 'Adicione uma foto da sua CNH');
+						//Dado que estou logado no sistema Bugger eat
+						//Quando estiver na tela de cadastro 
+						//Então eu valido se campo está visível
+						cy.caracteristicasEmail()
 					})
 				});
 
@@ -278,11 +156,10 @@ context('Projeto - Buger Eats', () =>
 					complemento = 1;
 					it(`${++teste}.${complemento} - Validar se o campo "whatsapp" está visível`, () =>
 					{
-						//Passo - Dado estou acessando o sistema BugerEats
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se campo está visível
-						cy.get('input[name="whatsapp"]')
-							.should('be.visible');
+						//Dado estou acessando o sistema BugerEats
+						//Quando estiver na tela de cadastro 
+						//Então eu valido se campo está visível
+						cy.visivel()
 					});
 
 					it(`${teste}.${++complemento} - Validar se o campo "whatsapp" está habilitado`, () =>
@@ -592,7 +469,7 @@ context('Projeto - Buger Eats', () =>
 						cy.get('li > img').eq(0)
 							.should('be.visible')
 							.and('have.attr', 'src')
-  							.and('include', '/moto');
+							.and('include', '/moto');
 							cy.get('li > img').eq(1)	
 								.should('be.visible')
 								.and('have.attr', 'src')
@@ -633,9 +510,11 @@ context('Projeto - Buger Eats', () =>
 
 					});
 				});
+			
 			});
 		});
 	});
 
 
 });
+

@@ -37,7 +37,7 @@ export class tela_home
 };
 
 //apenas exemplo
-export class tela_cadastro
+export class tela_cadastro_titulos
 {
     get logotipo() 
     {
@@ -48,4 +48,45 @@ export class tela_cadastro
     {
         return cy.get('.bg-active') //.classe
     };
+
+    get tituloPrincipal (){
+      return cy.get('h1') //Cadastre-se para fazer entregas
+    }
+    get subtitulo1 (){
+      return cy.get('h2').eq(0) //dados
+    }
+    get subtitulo2 (){
+      return cy.get('h2').eq(1) //endereço
+    }
+    get subtitulo3 (){
+      return cy.get('h2').eq(2) //metodo de entrega
+    }
 };
+
+export class tela_cadastro_campos
+{
+    get nome () 
+    {
+        return cy.get('input[name="fullName"]') //campo nome
+    };
+
+    get cpf () 
+    {
+        return cy.get('input[name="cpf"]') //campo cpf
+    };
+
+    get email () 
+    {
+        return cy.get('input[name="email"]') //campo email
+    };
+
+    get whatsapp () 
+    {
+        //return cy.get('input[name="whatsapp"]') //campo whatsapp
+    };
+    
+
+};
+
+
+
