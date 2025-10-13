@@ -82,9 +82,77 @@ export class tela_cadastro_campos
 
     get whatsapp () 
     {
-        //return cy.get('input[name="whatsapp"]') //campo whatsapp
+        return cy.get('input[name="whatsapp"]') //campo whatsapp
     };
     
+    get cep () 
+    {
+        return cy.get('input[name="postalcode"]') //campo cep
+    };
+
+    get btcep () 
+    {
+        return cy.get('[type="button"]') //botao cep
+    };
+    
+    get rua () 
+    {
+        return cy.get('[name=address]') //campo rua
+    };
+
+    get numero () 
+    {
+        return cy.get('input[name="address-number"]') //campo numero
+    };
+
+    get complemento () 
+    {
+        return cy.get('input[name="address-details"]') //campo complemento
+    };
+    
+    get bairro () 
+    {
+        return cy.get('[name=district]') //campo bairro
+    };
+
+    get cidade () 
+    {
+        return cy.get('[name=city-uf]') //campo cidade
+    };
+
+    get metodoentrega () 
+    {
+        return cy.get('[role="legend"] h2').eq(2) //campo metodo de entrega
+    };
+
+    get escolhametodo () 
+    {
+        return cy.get('[role="legend"] span') //campo escolha um metodo
+    };
+    get img1 () 
+    {
+        return cy.get('li > img').eq(0) //img 1
+    };
+    get img2 () 
+    {
+        return cy.get('li > img').eq(1) //img 2
+    };
+    get img3 () 
+    {
+        return cy.get('li > img').eq(2) //img 3
+    };
+    get acessibilidade () 
+    {
+        return cy.get('.delivery-method img') //acessibilidade
+    };
+     get cnh01 () 
+    {
+        return cy.get('.dropzone') //cnh01
+    };
+     get cnh02 () 
+    {
+        return cy.get('.dropzone input[type="file"]') //cnh02
+    };
 
 };
 

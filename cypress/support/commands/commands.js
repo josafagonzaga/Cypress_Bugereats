@@ -89,34 +89,16 @@ Cypress.Commands.add('validaTituloSubtitulo', () => {
 })
 
 //CAMPO NOME
-Cypress.Commands.add('visivelNome', () => {
+Cypress.Commands.add('caracteristicas_Nome', () => {
 	Tela_Cadastro_Campos.nome
 		.should('be.enabled')
-		.and('have.value', '');
-})
-Cypress.Commands.add('habilidatoNome', () => {
-	Tela_Cadastro_Campos.nome
-		.should('be.enabled');
-})
-Cypress.Commands.add('vazioNome', () => {
-	Tela_Cadastro_Campos.nome
-		.should('be.enabled')
-		.and('have.value', '');
-})
-Cypress.Commands.add('placeholderNome', () => {
-	Tela_Cadastro_Campos.nome
-		.should('be.visible')
+		.and('have.value', '')
+		.and('have.value', '')
 		.and('have.attr', 'placeholder', 'Nome completo');
-
 })
 
 //CAMPO CPF
-Cypress.Commands.add('visivelCPF', () => {
-	Tela_Cadastro_Campos.cpf
-		.should('be.enabled')
-		.and('have.value', '');
-})
-Cypress.Commands.add('caracteristicasCPF', () => {
+Cypress.Commands.add('caracteristicas_CPF', () => {
 	Tela_Cadastro_Campos.cpf
 		.should('be.visible')
 		.and('have.attr', 'type', 'text')
@@ -125,33 +107,6 @@ Cypress.Commands.add('caracteristicasCPF', () => {
 		.and('have.css', 'color', 'rgb(108, 108, 128)')
 		.and('be.empty')
 		.and('be.enabled')
-})
-Cypress.Commands.add('habilidatoCPF', () => {
-	Tela_Cadastro_Campos.cpf
-	cy.get('input[name="fullName"]')
-		.should('be.enabled');
-})
-Cypress.Commands.add('vazioCPF', () => {
-	Tela_Cadastro_Campos.cpf
-
-		.should('have.value', '');
-
-	Tela_Cadastro_Campos.cpf
-		.should('be.empty');
-
-	Tela_Cadastro_Campos.cpf
-		.type('123')
-
-	Tela_Cadastro_Campos.cpf
-		.clear()
-		.should('be.empty')
-
-})
-Cypress.Commands.add('placeholderCPF', () => {
-	Tela_Cadastro_Campos.cpf
-		.should('be.visible')
-		.and('have.attr', 'placeholder', 'CPF somente números');
-
 })
 
 //CAMPO EMAIL
@@ -178,7 +133,7 @@ Cypress.Commands.add('foco', () => {
 })
 Cypress.Commands.add('preenchimento', () => {
 	Tela_Cadastro_Campos.email
-	//Dado que inseri um email imvalido
+		//Dado que inseri um email imvalido
 		.type('12345678');
 
 	//Quando clico no botão 'Cadastre-se para fazer entregas'
@@ -191,33 +146,116 @@ Cypress.Commands.add('preenchimento', () => {
 })
 
 //CAMPO WHATSAPP
-Cypress.Commands.add('visivelwhatsapp', () => {
+Cypress.Commands.add('caracteristicas_Whatsapp', () => {
 	Tela_Cadastro_Campos.whatsapp
 		.should('be.enabled')
-		.and('have.value', '');
+		.and('have.value', '')
+		.and('be.empty')
+		.and('have.attr', 'placeholder', 'Whatsapp');
 })
-Cypress.Commands.add('habilidatowhatsapp', () => {
-	Tela_Cadastro_Campos.whatsapp
-	cy.get('input[name="fullName"]')
-		.should('be.enabled');
+
+//CAMPO CEP
+Cypress.Commands.add('caracteristicas_CEP', () => {
+	Tela_Cadastro_Campos.cep
+		.should('be.enabled')
+		.and('have.value', '')
+		.and('be.empty')
+		.and('have.attr', 'placeholder', 'CEP');
 })
-Cypress.Commands.add('vaziowhatsapp', () => {
-	Tela_Cadastro_Campos.whatsapp
-
-		.should('have.value', '');
-
-	Tela_Cadastro_Campos.whatsapp
-		.should('be.empty');
-
-	Tela_Cadastro_Campos.whatsapp
-		.type('123')
-
-	Tela_Cadastro_Campos.whatsapp
-		.clear()
-		.should('be.empty')
+//CAMPO BT CEP
+Cypress.Commands.add('caracteristicas_Bt_CEP', () => {
+	Tela_Cadastro_Campos.btcep
+		.should('be.enabled')
+		.and('have.value', 'Buscar CEP')
+		.and('have.attr', 'type', 'button');
 })
-Cypress.Commands.add('placeholderwhatsapp', () => {
-	Tela_Cadastro_Campos.whatsapp
+
+//CAMPO RUA
+Cypress.Commands.add('caracteristicas_rua', () => {
+	Tela_Cadastro_Campos.rua
 		.should('be.visible')
-		.and('have.attr', 'placeholder', 'Whatsapp somente números');
+		.and('be.disabled')
+		.and('have.attr', 'placeholder', 'Rua');
 })
+
+//CAMPO NUMERO
+Cypress.Commands.add('caracteristicas_Numero', () => {
+	Tela_Cadastro_Campos.numero
+		.should('be.visible')
+		.and('be.enabled')
+		.and('have.value', '')
+		.and('have.attr', 'placeholder', 'Número');
+})
+
+//CAMPO COMPLEMENTO
+Cypress.Commands.add('caracteristicas_Complemento', () => {
+	Tela_Cadastro_Campos.complemento
+		.should('be.visible')
+		.and('be.enabled')
+		.and('have.value', '')
+		.and('have.attr', 'placeholder', 'Complemento');
+})
+
+//CAMPO BAIRRO
+Cypress.Commands.add('caracteristicas_Bairro', () => {
+	Tela_Cadastro_Campos.bairro
+		.should('be.visible')
+		.and('be.disabled')
+		.and('have.value', '')
+		.and('have.attr', 'placeholder', 'Bairro');
+})
+//CAMPO CIDADE
+Cypress.Commands.add('caracteristicas_Cidade', () => {
+	Tela_Cadastro_Campos.cidade
+		.should('be.visible')
+		.and('be.disabled')
+		.and('have.value', '')
+		.and('have.attr', 'placeholder', 'Cidade/UF');
+})
+
+//CAMPO METODO DE ENTREGA
+Cypress.Commands.add('caracteristicas_CampoMetodoDeEntrega', () => {
+	Tela_Cadastro_Campos.metodoentrega
+		.should('be.visible')
+		.and('have.text', 'Método de entrega')
+	Tela_Cadastro_Campos.escolhametodo
+		.should('be.visible')
+		.and('contain', 'Escolha um dos métodos abaixo')
+
+	Tela_Cadastro_Campos.img1
+		.should('be.visible')
+		.and('have.attr', 'src')
+		.and('include', '/moto');
+	Tela_Cadastro_Campos.img2
+		.should('be.visible')
+		.and('have.attr', 'src')
+		.and('include', '/bike');
+	Tela_Cadastro_Campos.img3
+		.should('be.visible')
+		.and('have.attr', 'src')
+		.and('include', '/van');
+
+	Tela_Cadastro_Campos.acessibilidade.then(($imgs) => {
+		expect($imgs[0]).to.have.attr('alt', 'Moto')
+		expect($imgs[1]).to.have.attr('alt', 'Bike Elétrica')
+		expect($imgs[2]).to.have.attr('alt', 'Van/Carro')
+	});
+})
+
+//CAMPO CNH
+Cypress.Commands.add('carregar_CNH', () => {
+
+	Tela_Cadastro_Campos.cnh01
+		.should('be.visible')
+		.and('have.attr', 'tabindex', '0')
+		.and('contain.text', 'Foto da sua CNH')
+		.and('exist');
+	Tela_Cadastro_Campos.cnh02
+		.should('exist')
+		.and('have.attr', 'accept', 'image/*')
+		.and('have.attr', 'type', 'file')
+		.and('have.css', 'display', 'none');
+})
+
+
+
