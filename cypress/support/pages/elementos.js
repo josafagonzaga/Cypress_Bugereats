@@ -161,10 +161,30 @@ export class tela_cadastro_campos
 
 };
 
-export class alertasError {
+export class tela_cadastro_erro {
   get erro01 () 
     {
-        return cy.get('.alert-error') //alerta 01
+        return cy.get('.alert-error').eq(0) //alerta 01
+    };
+    get erro02 () 
+    {
+        return cy.get('.alert-error').eq(1) //alerta 02
+    };
+    get erro03 () 
+    {
+        return cy.get('.alert-error').eq(2) //alerta 03
+    };
+     get erro04 () 
+    {
+        return cy.get('.alert-error').eq(3) //alerta 04
+    };
+     get erro05 () 
+    {
+        return cy.get('.alert-error').eq(4) //alerta 05
+    };
+    get erro06 () 
+    {
+        return cy.get('.alert-error').eq(5) //alerta 06
     };
 }
 

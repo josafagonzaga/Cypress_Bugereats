@@ -266,166 +266,54 @@ context('Projeto - Buger Eats', () =>
 
 				describe('Campo CPF', () =>
 				{
-					it.only(`${teste}.${++complemento} - Validar se o campo "cpf" está em foco`, () =>
+					it(`${teste}.${++complemento} - Validar se o campo "cpf" está em foco`, () =>
 					{
 						cy.validacao01CPF()
 					})
 
 					it(`${teste}.${++complemento} - Validar que o campo "cpf" foi preenchido com um cpf inválido`, () =>
 					{
-						//Dado que inseri um cpf imvalido
-						cy.get('input[name="cpf"]')
-							.type('12345678');
-
-						//Quando clico no botão 'Cadastre-se para fazer entregas'
-						cy.get('.button-success')
-							.click();
-
-						//Entao deve ser apresentado a mensagem 'Oops! CPF inválido' logo abaixo do campo
-						cy.get('.alert-error').eq(1)
-							.should('have.text','Oops! CPF inválido');
+						cy.validacao02CPF()
 					})
 
 					it(`${teste}.${++complemento} - Validar que o campo "cpf" foi preenchido com um cpf válido`, () =>
 					{
-						//Dado estou na tela de cadastro
-						//Quando verifico o campo cpf
-						cy.get('input[name="cpf"]')
-						//E digito um cpf invalido
-							.type('89088525064');
-						//E clico no botão 'Cadastre-se para fazer entregas'
-								cy.get('.button-success')
-									.click();
-						//Entao o campo deve ser apresentado sem nenhuma mensagem de erro abaixo
-									cy.get('input[name="cpf"]')
-										.parent()
-										.find('.alert-error')
-										.should('not.exist')
-						//E deve estar preenchido com o nome valido digitado
-										cy.get('input[name="cpf"]')
-											.and('have.value','89088525064')
+						cy.validacao03CPF()
 					})
 					
 					it(`${teste}.${++complemento} - Validar se o campo "cpf" aceita numeros e caracteres especiais`, () =>
 					{
-						//Dado estou na tela de cadastro
-						//Quando verifico o campo cpf
-						cy.get('input[name="cpf"]')
-						//E digito um cpf invalido contendo caracteres especiais e numeros
-							.type('!@#12345678');
-						//E clico no botão 'Cadastre-se para fazer entregas'
-								cy.get('.button-success')
-									.click();
-						//Entao deve ser apresentado a mensagem 'Oops! CPF inválido' logo abaixo do campo
-									cy.get('.alert-error').eq(1)
-										.should('have.text','Oops! CPF inválido');
-								
+						cy.validacao04CPF()		
 					})
 
 					it(`${teste}.${++complemento} - Validar se o campo "cpf" aceita numeros e letras`, () =>
 					{
-						//Dado estou na tela de cadastro
-						//Quando verifico o campo cpf
-						cy.get('input[name="cpf"]')
-						//E digito um cpf invalido contendo numeros e letras
-							.type('ads12345678');
-						//E clico no botão 'Cadastre-se para fazer entregas'
-								cy.get('.button-success')
-									.click();
-						//Entao deve ser apresentado a mensagem 'Oops! CPF inválido' logo abaixo do campo
-									cy.get('.alert-error').eq(1)
-										.should('have.text','Oops! CPF inválido');
+						cy.validacao05CPF()
 					})
 
 					it(`${teste}.${++complemento} - Validar se o campo "cpf" aceita quantidade abaixo de 11 caracteres`, () =>
 					{
-						//Dado estou na tela de cadastro
-						//Quando verifico o campo cpf
-						cy.get('input[name="cpf"]')
-						//E digito um cpf invalido contendo abaixo de 11 caracteres
-							.type('1234567898');
-						//E clico no botão 'Cadastre-se para fazer entregas'
-								cy.get('.button-success')
-									.click();
-						//Entao deve ser apresentado a mensagem 'Oops! CPF inválido' logo abaixo do campo
-									cy.get('.alert-error').eq(1)
-										.should('have.text','Oops! CPF inválido');
+						cy.validacao06CPF()
 					})
 
 					it(`${teste}.${++complemento} - Validar se o campo "cpf" aceita quantidade de acima de 11 caracteres`, () =>
 					{
-						//Dado estou na tela de cadastro
-						//Quando verifico o campo cpf
-						cy.get('input[name="cpf"]')
-						//E digito um cpf invalido contendo abaixo de 11 caracteres
-							.type('123456789876');
-						//E clico no botão 'Cadastre-se para fazer entregas'
-								cy.get('.button-success')
-									.click();
-						//Entao deve ser apresentado a mensagem 'Oops! CPF inválido' logo abaixo do campo
-									cy.get('.alert-error').eq(1)
-										.should('have.text','Oops! CPF inválido');
+						cy.validacao07CPF()
 					})
 
 					it(`${teste}.${++complemento} - Validar se o campo "cpf" aceita todos os caracteres iguais`, () =>
 					{
-						//Dado estou na tela de cadastro
-						//Quando verifico o campo cpf
-						cy.get('input[name="cpf"]')
-						//E digito um cpf invalido contendo abaixo de 11 caracteres
-							.type('11111111111');
-						//E clico no botão 'Cadastre-se para fazer entregas'
-								cy.get('.button-success')
-									.click();
-						//Entao deve ser apresentado a mensagem 'Oops! CPF inválido' logo abaixo do campo
-									cy.get('.alert-error').eq(1)
-										.should('have.text','Oops! CPF inválido');
+						cy.validacao08CPF()
 					})
 
 					it(`${teste}.${++complemento} - Validar se o campo "cpf" aceita a mascara de CPF no padrao com ponstos e digito`, () =>
 					{
-						//Dado estou na tela de cadastro
-						//Quando verifico o campo cpf
-						cy.get('input[name="cpf"]')
-						//E digito um cpf valido contendo pontos e digito
-							.type('890.885.250-64');
-						//E clico no botão 'Cadastre-se para fazer entregas'
-								cy.get('.button-success')
-									.click();
-						//Entao deve ser apresentado a mensagem 'Oops! CPF inválido' logo abaixo do campo
-									cy.get('.alert-error').eq(1)
-										.should('have.text','Oops! CPF inválido');
+						cy.validacao09CPF()
 					})
 
 					it(`${teste}.${++complemento} - Validar campo cpf preenchido e os campos, nome, e-mail, cep, numero, metodo de entrega e CNH nao preenchidos`, () =>
 					{
-						//Dado estou na tela de cadastro
-						//Quando verifico o campo cpf
-						cy.get('input[name="cpf"]')
-						//E digito um cpf válido e o restantes dos campos em branco
-							.type('89088525064');
-						//E clico no botao Cadastre-se para fazer entregas
-							cy.get('.button-success')
-								.click();
-						//Entao deve ser apresentado os erros para preencher os campos vazios						
-								cy.get('.alert-error').eq(0)
-									.should('be.visible')
-									.and('have.text','É necessário informar o nome');
-									cy.get('.alert-error').eq(1)
-										.should('be.visible')
-										.and('have.text','É necessário informar o email');
-											cy.get('.alert-error').eq(2)
-												.should('be.visible')
-												.and('have.text', 'É necessário informar o CEP');
-												cy.get('.alert-error').eq(3)
-													.should('be.visible')
-													.and('have.text', 'É necessário informar o número do endereço');
-													cy.get('.alert-error').eq(4)
-														.should('be.visible')
-														.and('have.text', 'Selecione o método de entrega');
-														cy.get('.alert-error').eq(5)
-															.should('be.visible')
-															.and('have.text', 'Adicione uma foto da sua CNH');
+						cy.validacao10CPF()
 					})
 				});
 
@@ -433,76 +321,30 @@ context('Projeto - Buger Eats', () =>
 				{
 					it(`${teste}.${++complemento} - Validar se o campo "email" está em foco`, () =>
 					{
-						//Passo - Dado estou acessando o sistema BugerEats
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se o campo está em foco
-							
-						cy.get('input[name="email"]')
-							.realHover()
-								.and('have.css', 'border-bottom-color', 'rgb(52, 203, 121)')
-								.and('have.css', 'border-left-color', 'rgb(52, 203, 121)')
-								.and('have.css', 'border-right-color', 'rgb(52, 203, 121)')
-								.and('have.css', 'border-top-color', 'rgb(52, 203, 121)')
+						cy.validacao01Email()
 					})
 
 					it(`${teste}.${++complemento} - Validar se o campo "email" aceita numeros`, () =>
 					{
-						//Passo - Dado estou acessando o sistema BugerEats
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se o campo aceita numeros
-							
-						cy.get('input[name="email"]')
-							.type('12345');
-							cy.get('.button-success')
-								.click();
-							cy.get('input[name="email"]')
-								.should('have.value','12345');
-								
+						cy.validacao02Email()
 					})
 
 					it(`${teste}.${++complemento} - Validar se o campo "email" aceita numeros e letras`, () =>
 					{
-						//Passo - Dado estou acessando o sistema BugerEats
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se o campo aceita numeros e letras
-							
-						cy.get('input[name="email"]')
-							.should('be.visible')
-							.type('jose123d');
-							cy.get('.button-success')
-								.click();
+						cy.validacao03Email()
 					})
 
 					it(`${teste}.${++complemento} - Validar se o campo "email" aceita numeros, letras e caracteres especiais`, () =>
 					{
-						//Passo - Dado estou acessando o sistema BugerEats
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se o campo aceita numeros, letras e caracteres especiais
-							
-						cy.get('input[name="email"]')
-							.should('be.visible')
-							.type('jose1!@#23d');
-							cy.get('.button-success')
-								.click();
+						cy.validacao04Email()
 					})
-
-					
 				});
 
 				describe('Campo whatsapp', () =>
 				{
-					it(`${teste}.${++complemento} - Validar se o campo "whatsapp" está em foco`, () =>
+					it.only(`${teste}.${++complemento} - Validar se o campo "whatsapp" está em foco`, () =>
 					{
-						//Passo - Dado estou acessando o sistema BugerEats
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se o campo está em foco
-							
-						cy.get('input[name="whatsapp"]')
-							.realHover()
-								.and('have.css', 'border-bottom-color', 'rgb(52, 203, 121)')
-								.and('have.css', 'border-left-color', 'rgb(52, 203, 121)')
-								.and('have.css', 'border-right-color', 'rgb(52, 203, 121)')
-								.and('have.css', 'border-top-color', 'rgb(52, 203, 121)')
+						cy.validacao01Whatsapp()
 					})
 
 					it(`${teste}.${++complemento} - Validar se o campo "whatsapp" aceita somente numeros`, () =>
@@ -721,8 +563,6 @@ context('Projeto - Buger Eats', () =>
 					})
 					
 				});
-
-				
 			});
 		});
 	});
