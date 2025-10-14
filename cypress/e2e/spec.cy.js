@@ -224,7 +224,7 @@ context('Projeto - Buger Eats', () =>
 		context(`${++contexto} - Regras de negócio.`, () => 
 		{
 			let complemento = 1;
-			describe.only(`${++cenario} - Validações Comportamentais.`, () => 
+			describe(`${++cenario} - Validações Comportamentais.`, () => 
 			{
 				beforeEach(() => {
 					cy.telaCadastro()
@@ -240,93 +240,35 @@ context('Projeto - Buger Eats', () =>
 				{
 					it(`${teste}.${++complemento} - Validar se o campo "nome" está em foco`, () =>
 					{
-						//Passo - Dado estou acessando o sistema BugerEats
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se o campo está em foco
-							
-						cy.get('input[name="fullName"]')
-							.realHover()
-								.and('have.css', 'border-bottom-color', 'rgb(52, 203, 121)')
-								.and('have.css', 'border-left-color', 'rgb(52, 203, 121)')
-								.and('have.css', 'border-right-color', 'rgb(52, 203, 121)')
-								.and('have.css', 'border-top-color', 'rgb(52, 203, 121)')
+						cy.validacao01Nome()
 					})
 
 					it(`${teste}.${++complemento} - Validar que o campo "nome" deve estar preenchido pra prosseguir com o cadastro`, () =>
 					{
-						//Passo - Dado estou acessando o sistema BugerEats
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido obrigatoriedade do preenchimento do cammpo
-							
-						cy.get('input[name="fullName"]')
-							.should('be.visible')
-							.and('have.value', '');
-							cy.get('.button-success')
-								.click();
-								cy.get('.alert-error')
-									.eq(0)
-									.should('be.visible')
-									.and('have.text','É necessário informar o nome');
+						cy.validacao02Nome()
 					})
 
 					it(`${teste}.${++complemento} - Validar se o campo "nome" aceita numeros`, () =>
 					{
-						//Passo - Dado estou acessando o sistema BugerEats
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se o campo aceita numeros
-							
-						cy.get('input[name="fullName"]')
-							.type('12345');
-							cy.get('.button-success')
-								.click();
-							cy.get('input[name="fullName"]')
-								.should('have.value','12345');
-								
+						cy.validacao03Nome()		
 					})
 
 					it(`${teste}.${++complemento} - Validar se o campo "nome" aceita numeros e letras`, () =>
 					{
-						//Passo - Dado estou acessando o sistema BugerEats
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se o campo aceita numeros e letras
-							
-						cy.get('input[name="fullName"]')
-							.should('be.visible')
-							.type('jose123d');
-							cy.get('.button-success')
-								.click();
+						cy.validacao04Nome()
 					})
 
 					it(`${teste}.${++complemento} - Validar se o campo "nome" aceita numeros, letras e caracteres especiais`, () =>
 					{
-						//Passo - Dado estou acessando o sistema BugerEats
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se o campo aceita numeros, letras e caracteres especiais
-							
-						cy.get('input[name="fullName"]')
-							.should('be.visible')
-							.type('jose1!@#23d');
-							cy.get('.button-success')
-								.click();
+						cy.validacao05Nome()
 					})
-
-					
 				});
 
 				describe('Campo CPF', () =>
 				{
-					it(`${teste}.${++complemento} - Validar se o campo "cpf" está em foco`, () =>
+					it.only(`${teste}.${++complemento} - Validar se o campo "cpf" está em foco`, () =>
 					{
-						//Dado estou na tela de cadastro
-						//Quando verifico o campo cpf
-						cy.get('input[name="cpf"]')
-						//E coloco o mouse no campo
-							.realHover()
-						//Então eu valido se campo está em foco
-								.and('have.css', 'border-bottom-color', 'rgb(52, 203, 121)')
-								.and('have.css', 'border-left-color', 'rgb(52, 203, 121)')
-								.and('have.css', 'border-right-color', 'rgb(52, 203, 121)')
-								.and('have.css', 'border-top-color', 'rgb(52, 203, 121)');
+						cy.validacao01CPF()
 					})
 
 					it(`${teste}.${++complemento} - Validar que o campo "cpf" foi preenchido com um cpf inválido`, () =>

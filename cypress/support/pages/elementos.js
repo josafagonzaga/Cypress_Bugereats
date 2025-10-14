@@ -154,7 +154,18 @@ export class tela_cadastro_campos
         return cy.get('.dropzone input[type="file"]') //cnh02
     };
 
+    get btsucesso () 
+    {
+        return cy.get('.button-success') //botao cep
+    };
+
 };
 
+export class alertasError {
+  get erro01 () 
+    {
+        return cy.get('.alert-error') //alerta 01
+    };
+}
 
 
