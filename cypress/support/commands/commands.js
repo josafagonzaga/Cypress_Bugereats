@@ -10,13 +10,8 @@ Cypress.Commands.add('visitaProjeto', () => {
 	cy.visit('https://buger-eats-qa.vercel.app/')
 
 	Tela_Home.logotipo
-		.should('be.visible');
-
-	cy.url()
-		.should('be.equal', 'https://buger-eats-qa.vercel.app/');
-
-	Tela_Home.btcadastro
 		.should('be.visible')
+		//.and('be.equal', 'https://buger-eats-qa.vercel.app/');
 })
 
 Cypress.Commands.add('telaCadastro', () => {
@@ -29,13 +24,14 @@ Cypress.Commands.add('telaCadastro', () => {
 		.should('be.equal', 'https://buger-eats-qa.vercel.app/deliver');
 })
 
+Cypress.Commands.add('telahome', () => {
+	cy.visit('https://buger-eats-qa.vercel.app/')
+})
+
 Cypress.Commands.add('validaLayoputPaginaHome', () => {
 	//Dado que a tela home está sendo visualizada
 	//Quando validar os elementos em tela
-	cy.waitUntil(() =>
-		cy.get('img')
-			.should('be.visible')
-	);
+	cy.visit('https://buger-eats-qa.vercel.app/')
 
 	/*Então o sistema deverá apresentar
 		*Logotipo

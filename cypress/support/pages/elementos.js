@@ -2,7 +2,7 @@ export class tela_home
 {
     get logotipo() 
     {
-        return cy.get('img') //.classe
+        return cy.get('img[src="/static/media/logo.e7289086.svg"]')
     };
 
     get home() 
