@@ -33,7 +33,7 @@ export class tela_home
   get textoBotaoCadastro() {
     return cy.get('strong'); // Texto do botão: Cadastre-se para fazer entregas
   }
-    
+      
 };
 
 //apenas exemplo
@@ -122,7 +122,7 @@ export class tela_cadastro_campos
 
     get metodoentrega () 
     {
-        return cy.get('[role="legend"] h2').eq(2) //campo metodo de entrega
+        return cy.get('ul.delivery-method li') //campo metodo de entrega
     };
 
     get escolhametodo () 
@@ -185,6 +185,10 @@ export class tela_cadastro_erro {
     get erro06 () 
     {
         return cy.get('.alert-error').eq(5) //alerta 06
+    };
+     get erro07 () 
+    {
+        return cy.get('.alert-error') //alerta 00
     };
 }
 

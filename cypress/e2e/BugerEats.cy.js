@@ -342,44 +342,19 @@ context('Projeto - Buger Eats', () =>
 
 				describe('Campo whatsapp', () =>
 				{
-					it.only(`${teste}.${++complemento} - Validar se o campo "whatsapp" está em foco`, () =>
+					it(`${teste}.${++complemento} - Validar se o campo "whatsapp" está em foco`, () =>
 					{
 						cy.validacao01Whatsapp()
 					})
 
 					it(`${teste}.${++complemento} - Validar se o campo "whatsapp" aceita somente numeros`, () =>
 					{
-						//Passo - Dado estou acessando o sistema BugerEats
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se o campo aceita numeros
-							
-						cy.get('input[name="whatsapp"]')
-							.type('adfr');
-							cy.get('.button-success')
-								.click();
-							cy.get('input[name="whatsapp"]')
-								.should('have.value','adfr');
-								cy.get('.alert-error').eq(3)
-									.should('be.visible')
-									.and('have.text','Oops! Whatsapp com formato incorreto')
-								
+						cy.validacao02Whatsapp()
 					})
 
 					it(`${teste}.${++complemento} - Validar se o campo "whatsapp" possui formato correto`, () =>
 					{
-						//Passo - Dado estou acessando o sistema BugerEats
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se o campo aceita numeros
-							
-						cy.get('input[name="whatsapp"]')
-							.type('349882219');
-							cy.get('.button-success')
-								.click();
-							cy.get('input[name="whatsapp"]')
-								.should('have.value','349882219');
-								cy.get('.alert-error').eq(3)
-									.should('be.visible')
-									.and('have.text','Oops! Whatsapp com formato incorreto')
+						cy.validacao03Whatsapp()
 					})
 				});
 
@@ -387,139 +362,40 @@ context('Projeto - Buger Eats', () =>
 				{
 					it(`${teste}.${++complemento} - Validar se o campo "CEP" está em foco`, () =>
 					{
-						//Passo - Dado estou acessando o sistema BugerEats
-						//Passo - Quando estiver na tela de cadastro 
-						//Passo - Então eu valido se o campo está em foco
-							
-						cy.get('input[name="postalcode"]')
-							.realHover()
-								.and('have.css', 'border-bottom-color', 'rgb(52, 203, 121)')
-								.and('have.css', 'border-left-color', 'rgb(52, 203, 121)')
-								.and('have.css', 'border-right-color', 'rgb(52, 203, 121)')
-								.and('have.css', 'border-top-color', 'rgb(52, 203, 121)')
+						cy.validacao01CEP()
 					})
 
 					it(`${teste}.${++complemento} - Validar cep invalido`, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro
-						//E digitar um cep valido
-						//E clico no botao "buscar cep"
-						//Então é apresentado a mensagem "Informe um CEP valido"
-							
-						cy.get('input[name="postalcode"]')
-							.type('38400');
-							cy.get('[type="button"]')
-								.click();
-								cy.get('.alert-error').eq(0)
-									.should('be.visible')
-									.and('have.text','Informe um CEP válido')
+						cy.validacao02CEP()
 					})
 
 					it(`${teste}.${++complemento} - Validar cep válido`, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro
-						//E digitar um cep valido
-						//E clico no botao "buscar cep"
-						//Então os campos Rua, Bairro e Cidade devem ser preenchidos automaticamente
-						cy.get('input[name="postalcode"]')
-							.type('38400402');
-							cy.get('[type="button"]')
-								.click();
-								cy.get('input[name="address"]')
-									.should('not.have.value')
-									cy.get('input[name="district"]')
-										.should('not.have.value')
-										cy.get('input[name="city-uf"]')
-											.should('not.have.value')
+						cy.validacao03CEP()
 					})
 
 					it(`${teste}.${++complemento} - Validar cep inválido`, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro
-						//E digitar um cep valido
-						//E clico no botao "buscar cep"
-						//Então é apresentado a mensagem "Informe um CEP valido"
-							
-						cy.get('input[name="postalcode"]')
-							cy.get('[type="button"]')
-								.click();
-								cy.get('.alert-error').eq(0)
-									.and('have.text','Informe um CEP válido')
-									
+						cy.validacao04CEP()		
 					})
 
 					it(`${teste}.${++complemento} - Erro some após digitar cep válido`, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro
-						//E digitar um cep invalido
-						//E clico no botao "buscar cep"
-						//Então é apresentado a mensagem "Informe um CEP valido"
-						//E após digitar um cep valido o erro desaparece
-							
-						cy.get('input[name="postalcode"]')
-							cy.get('[type="button"]')
-								.click();
-								cy.get('.alert-error')
-									.and('have.text','Informe um CEP válido')
-									cy.get('input[name="postalcode"]')
-							.type('38400402');
-							cy.get('[type="button"]')
-								.click();
-								cy.get('.alert-error')
-									.should('not.exist');
+						cy.validacao05CEP()
 					})
-
 				});
 
 				describe('Campo Metodo de entrega', () =>
 				{
 					it(`${teste}.${++complemento} - Validar obrigatorietade na seleção de metodo de entrega `, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro
-						//E clico no botao cadastre se sem escolho um metodo de entrega
-						//Então devera aparecer um erro 'Selecione o método de entrega'
-
-						cy.get('.delivery-method > :nth-child(1)')
-							.should('not.be.selected')
-						cy.get('.delivery-method > :nth-child(2)')
-							.should('not.be.selected')
-						cy.get('.delivery-method > :nth-child(3)')
-							.should('not.be.selected')
-							cy.get('.button-success')
-								.click();
-								cy.get('.alert-error').eq(5)
-									.should('have.text','Selecione o método de entrega');
+						cy.validacao01Entrega()
 					})
+					
 					it(`${teste}.${++complemento} - Validar objetos selecionados `, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro
-						//E seleciono o metodo de entrega
-						//Então o objeto devera ficar selecionado, com a borda verde
-
-						cy.get('.delivery-method > li').eq(0)
-							.click()
-							cy.get('.selected').eq(0)
-								.should('have.attr','class','selected')
-								.and('be.exist')
-								.and('have.css','border-top-color','rgb(52, 203, 121)')
-						cy.get('.delivery-method > li').eq(1)
-							.click()
-							cy.get('.selected').eq(1)
-								.should('have.attr','class','selected')
-								.and('be.exist')
-								.and('have.css','border-top-color','rgb(52, 203, 121)')
-						cy.get('.delivery-method > li').eq(2)
-							.click()
-							cy.get('.selected').eq(2)
-								.should('have.attr','class','selected')
-								.and('be.exist')
-								.and('have.css','border-top-color','rgb(52, 203, 121)')
+						cy.validacao02Entrega()
 					})
 				});
 
@@ -528,40 +404,18 @@ context('Projeto - Buger Eats', () =>
 					
 					it(`${teste}.${++complemento} - Validar seleção de imagem correta`, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro
-						//E clico no campo "Foto da sua cnh"
-						//Então a foto deverá ser enviada para a aplicação
-
-						cy.get('.dropzone input[type="file"]')
-							.selectFile('cypress/support/img/cnh.jpeg', { force: true })
+						cy.validacao01CNH()
 					})
 
 					it(`${teste}.${++complemento} - Validar o upload de uma imagem`, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro
-						//E clico no campo "Foto da sua cnh"
-						//Então a foto deverá ser enviada para a aplicação
-
-						cy.get('.dropzone input[type="file"]')
-							.attachFile('/' + 'cnh.jpeg')
+						cy.validacao02CNH()
 					})
 
 					it(`${teste}.${++complemento} - Validar se após o upload a imagem aparece na tela`, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro
-						// E faço o upload da imagem
-						//Então a foto deverá estar visível no campo
-						cy.get('.dropzone input[type="file"]')
-							.selectFile('cypress/support/img/cnh.jpeg', { force: true });
-						cy.get('.dropzone img')
-  							.should('have.attr', 'src');
-
-						
+						cy.validacao03CNH()
 					})
-					
 				});
 			});
 		});
