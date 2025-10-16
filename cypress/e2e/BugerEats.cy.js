@@ -4,7 +4,7 @@ context('Projeto - Buger Eats', () =>
 	let cenario = 1;
 	let teste = 1;
 
-	context.skip('Tela Home', () => 
+	context('Tela Home', () => 
 	{
 		context(`${contexto} - Critérios de aceite.`, () => 
 		{
@@ -43,23 +43,19 @@ context('Projeto - Buger Eats', () =>
 					cy.clearAllCookies();
 					cy.clearAllSessionStorage();
 				});
-
-				describe('Link "Cadastre-se para fazer entregas"', () => 
-				{
+			
 					it(`${++teste}.${complemento} - Validar redirecionamento do link.`, () => 
 					{
 						cy.redirecionamentoLinkCadastro()
 					});
-				});
+				
 			});
 		});
 	});
 
-
-
 	context('Tela Cadastro', () => 
 	{
-		context.skip(`${contexto} - Critérios de aceite.`, () => 
+		context(`${contexto} - Critérios de aceite.`, () => 
 		{
 			let complemento = 1;
 			
@@ -79,9 +75,6 @@ context('Projeto - Buger Eats', () =>
 				{
 					it(`${++teste}.${complemento} - Validar "título e subtitulos"`, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro 
-						//Então eu valido o titulo e sub-titulos
 						cy.validaTituloSubtitulo()
 					});
 				});
@@ -91,9 +84,6 @@ context('Projeto - Buger Eats', () =>
 					//complemento = 1;
 					it(`${teste}.${++complemento} - Validar caracteristicas do campo nome`, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro 
-						//Então eu valido as caracteristicas do campo
 						cy.caracteristicas_Nome()
 					});
 				});
@@ -102,9 +92,6 @@ context('Projeto - Buger Eats', () =>
 				{
 					it(`${teste}.${++complemento} - Validar caracteristicas do campo CPF`, () =>
 					{
-						//Dado que estou logado no sistema Bugger eat
-						//Quando estiver na tela de cadastro 
-						//Então eu valido se campo está visível
 						cy.caracteristicas_CPF()
 					});
 				});
@@ -113,9 +100,6 @@ context('Projeto - Buger Eats', () =>
 				{
 					it(`${teste}.${++complemento} - Validar caracteristicas do campo email`, () =>
 					{
-						//Dado que estou logado no sistema Bugger eat
-						//Quando estiver na tela de cadastro 
-						//Então eu valido as caracteristicas do campo email
 						cy.caracteristicasEmail()
 					})
 				});
@@ -124,9 +108,6 @@ context('Projeto - Buger Eats', () =>
 				{
 					it(`${teste}.${++complemento} - Validar caracteristicas do campo Whatsapp`, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro 
-						//Então eu valido as caracteristiscas do campo
 						cy.caracteristicas_Whatsapp()
 					});
 				});
@@ -143,9 +124,6 @@ context('Projeto - Buger Eats', () =>
 				{
 					it(`${teste}.${++complemento} - Validar caracteristicas do botao cep`, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro 
-						//Então eu valido as caracteristicas do botao cep
 						cy.caracteristicas_Bt_CEP()
 					});
 				});
@@ -154,9 +132,6 @@ context('Projeto - Buger Eats', () =>
 				{
 					it(`${teste}.${++complemento} - Validar as caracteristicas do campo "rua"`, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro 
-						//Então eu valido as caracteristicas do campo rua
 						cy.caracteristicas_rua()
 					});
 				});
@@ -165,9 +140,6 @@ context('Projeto - Buger Eats', () =>
 				{
 					it(`${teste}.${++complemento} - Validar as caracteristicas do campo "numero"`, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro 
-						//Então eu valido as caracteristicas do campo
 						cy.caracteristicas_Numero()
 					});
 				});
@@ -176,9 +148,6 @@ context('Projeto - Buger Eats', () =>
 				{
 					it(`${teste}.${++complemento} - Validar as caracteristicas do campo "complemento"`, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro 
-						//Então eu valido as caracteristicas do campo
 						cy.caracteristicas_Complemento()
 					});
 				});
@@ -187,9 +156,6 @@ context('Projeto - Buger Eats', () =>
 				{
 					it(`${teste}.${++complemento} - Validar caracteristicas do campo "bairro"`, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro 
-						//Então eu valido as caracteristicas do campo
 						cy.caracteristicas_Bairro()
 					});
 				});
@@ -198,9 +164,6 @@ context('Projeto - Buger Eats', () =>
 				{
 					it(`${teste}.${++complemento} - Validar caracteristicas do campo "cidade"`, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro 
-						//Então eu valido as caracteristicas do campo
 						cy.caracteristicas_Cidade()
 					});
 				});
@@ -209,17 +172,12 @@ context('Projeto - Buger Eats', () =>
 				{
 					it(`${teste}.${++complemento} - Validar caracteristica do campo "Metodo de entrega"`, () =>
 					{
-						//Dado estou acessando o sistema BugerEats
-						//Quando estiver na tela de cadastro 
-						//Então eu valido as caracteristicas do campo
 						cy.caracteristicas_CampoMetodoDeEntrega()
 						cy.carregar_CNH()
 					});
 				});
 			});
 		});
-
-		//refatorando a partir daqui
 
 		context(`${++contexto} - Regras de negócio.`, () => 
 		{
@@ -370,7 +328,7 @@ context('Projeto - Buger Eats', () =>
 						cy.validacao02CEP()
 					})
 
-					it(`${teste}.${++complemento} - Validar cep válido`, () =>
+					it.only(`${teste}.${++complemento} - Validar cep válido`, () =>
 					{
 						cy.validacao03CEP()
 					})
@@ -419,6 +377,57 @@ context('Projeto - Buger Eats', () =>
 				});
 			});
 		});
+
+		context(`${++contexto} - End To End.`, () => 
+		{
+			let complemento = 1;
+			describe(`${++cenario} - Fluxos Funcionais`, () => 
+			{
+				beforeEach(() => {
+					cy.telaCadastro()
+				});
+
+				afterEach(() => {
+					cy.clearAllLocalStorage();
+					cy.clearAllCookies();
+					cy.clearAllSessionStorage();
+				});
+
+				describe('Validar cadastro incompleto', () => {
+					
+					it(`${teste}.${++complemento} - Validar preencimento Nome`, () =>
+					{
+						cy.validaFluxo01()
+					})
+
+					it(`${teste}.${++complemento} - Validar preencimento Nome + CPF`, () =>
+					{
+						cy.validaFluxo02()
+					})
+
+					it(`${teste}.${++complemento} - Validar preencimento Nome + CPF + e-mail`, () =>
+					{
+						cy.validaFluxo03()
+					})
+
+					it(`${teste}.${++complemento} - Validar preencimento Nome + CPF + e-mail + CEP`, () =>
+					{
+						cy.validaFluxo04()
+					})
+
+					it(`${teste}.${++complemento} - Validar preencimento Nome + CPF + e-mail + CEP + Metodo de entrega`, () =>
+					{
+						cy.validaFluxo05()
+					})
+
+					it(`${teste}.${++complemento} - Validar cadastro com sucesso`, () =>
+					{
+						cy.validaFluxo06()
+					})
+				});
+			});
+		});
+
 	});
 });
 

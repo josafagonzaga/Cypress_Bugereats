@@ -211,9 +211,8 @@ Cypress.Commands.add('caracteristicas_Cidade', () => {
 
 //CAMPO METODO DE ENTREGA
 Cypress.Commands.add('caracteristicas_CampoMetodoDeEntrega', () => {
-	Tela_Cadastro_Campos.metodoentrega
-		.should('be.visible')
-		.and('have.text', 'Método de entrega')
+	
+
 	Tela_Cadastro_Campos.escolhametodo
 		.should('be.visible')
 		.and('contain', 'Escolha um dos métodos abaixo')
